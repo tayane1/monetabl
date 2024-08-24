@@ -1,0 +1,72 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+  /* Transitions pour la sidebar */
+  .sidebar-item {
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .sidebar-item:hover {
+    color: #edf2f7; /* Couleur de survol */
+    background-color: #2d3748; /* Fond de survol */
+    border-radius: 0.375rem; /* Coins arrondis */
+    padding: 0.5rem 1rem; /* Espacement interne */
+  }
+
+  /* Animation pour les boutons */
+  .button-hover {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .button-hover:hover {
+    background-color: #4a5568; /* Couleur de survol */
+    transform: translateY(-2px); /* Légère élévation */
+  }
+
+  /* Effets de survol pour les lignes du tableau */
+  tbody tr:hover {
+    background-color: #f7fafc; /* Fond de survol */
+    transition: background-color 0.3s ease;
+  }
+  
+   /* Transitions pour les liens de la sidebar */
+   .sidebar-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar-link:hover {
+    color: #edf2f7; /* Couleur de survol */
+    background-color: #2d3748; /* Fond de survol */
+    border-radius: 0.375rem; /* Coins arrondis */
+    padding: 0.5rem 1rem; /* Espacement interne */
+}
+
+/* Effets de survol pour les boutons du formulaire */
+.form-button {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #4a5568; /* Couleur de survol */
+    transform: translateY(-2px); /* Légère élévation */
+}
+
+/* Effets de survol pour les champs de formulaire */
+input, select {
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #4a5568; /* Couleur de bordure au focus */
+    box-shadow: 0 0 0 1px #4a5568; /* Ombre au focus */
+}
