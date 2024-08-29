@@ -1,0 +1,117 @@
+{% load static %}
+{% url 'dashboard:home' as d%}
+{% url 'student:index' as e%}
+{% url 'teacher:index' as t%}
+{% url 'rapport:index' as r%}
+{% url 'user:index' as u%}
+{% url 'student:add' as et%}
+{% url 'teacher:add' as te%}
+{% url 'user:update' as ue%}
+{% url 'student:update' as st%}
+{% url 'teacher:update' as ta%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block title %}<title>Mon Etab - Utilisateurs</title>{% endblock title %}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'user/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'student/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'teacher/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'rapport/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    
+</head>
+
+<body class="bg-gray-100 font-sans antialiased">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside {% if request.path == d %} 
+        class="w-64 bg-gray-800 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}
+        
+        {% if request.path == e %} 
+        class="w-64 bg-yellow-800 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}
+        
+        {% if request.path == t %} 
+        class="w-64 bg-green-800 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}
+        
+        {% if request.path == u %} 
+        class="w-64 bg-red-800 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}
+        
+        {% if request.path == r %} 
+        class="w-64 bg-blue-900 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}
+        {% if request.path == et %} 
+        class="w-64 bg-yellow-800 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}
+        
+        {% if request.path == te %} 
+        class="w-64 bg-green-800 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}
+        
+        {% if request.path == st %} 
+        class="w-64 bg-yellow-800 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}
+        
+        {% if request.path == ta %} 
+        class="w-64 bg-green-800 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}
+        
+        {% if request.path == ue %} 
+        class="w-64 bg-red-800 text-white flex flex-col justify-between shadow-lg transition-transform transform -translate-x-full lg:translate-x-0 lg:relative lg:shadow-none lg:w-72 lg:flex-shrink-0"
+        {% endif %}>
+            <div class="p-6 fade-in">
+                <h2 class="text-3xl font-bold text-center mb-8">Mon Etab</h2>
+                <nav>
+                    <ul>
+                        <li class="mb-4">
+                            <a href="{% url 'dashboard:home' %}" class=" {% if request.path == d %} text-blue-400 {% endif %} hover:text-gray-300 flex items-center transition-colors">
+                                <span class="mr-2 text-yellow-400">🏠</span> Tableau de bord 
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="{% url 'student:index' %}" class=" {% if request.path == e %} text-blue-400 {% endif %} hover:text-gray-300 flex items-center transition-colors">
+                                <span class="mr-2 text-green-400">👥</span> Élèves
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="{% url 'teacher:index' %}" class=" {% if request.path == t %} text-blue-400 {% endif %}  hover:text-blue-300 flex items-center font-medium transition-colors">
+                                <span class="mr-2 text-red-400">👩‍🏫</span> Professeurs
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="{% url 'user:index' %}" class=" {% if request.path == u %} text-blue-400 {% endif %} hover:text-gray-300 flex items-center transition-colors">
+                                <span class="mr-2 text-blue-400">👤</span> Utilisateurs
+                            </a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="{% url 'rapport:index' %}" class=" {% if request.path == r %} text-blue-400 {% endif %} hover:text-gray-300 flex items-center transition-colors">
+                                <span class="mr-2 text-blue-400">📊</span> Rapport
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="p-6 ">
+                <a href="{% url 'dashboard:index' %}" class="text-gray-400 hover:text-white flex items-center justify-center">
+                    <span class="mr-2">🔓</span> Déconnexion
+                </a>
+            </div>
+        </aside>
+        
+        
+        {% block content %}
+        
+        
+        {% endblock content %}
+
+    </div>
+</body>
+</html>

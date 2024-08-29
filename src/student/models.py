@@ -11,3 +11,10 @@ class Student(models.Model):
     telephon = models.CharField(max_length=15)  # Champ pour le téléphone
     classRoom = models.CharField(max_length=50)
     matricule = models.CharField(max_length=20, unique=True)
+    
+    def __str__(self):
+        return self.lastName
+        
+class Meta:
+        verbose_name = 'Elève'
+        verbose_name_plural = 'Elèves'  # Pluralisation du nom de la classe en français

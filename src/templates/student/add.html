@@ -1,78 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ajouter un élève</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    {% load static %}
-    
-    <link rel="stylesheet" href="{% static 'student/css/style.css' %}">
-  </head>
-  <body class="bg-gray-100 font-sans antialiased">
-    <div class="flex min-h-screen">
-      <!-- Sidebar -->
-      <aside class="w-64 bg-yellow-800 text-white flex flex-col justify-between">
-        <div class="p-6 fade-in">
-          <h2 class="text-3xl font-semibold text-center mb-8">Mon Etab</h2>
-          <nav>
-            <ul>
-              <li class="mb-4">
-                <a
-                  href="{% url 'dashboard:home' %}"
-                  class="sidebar-item flex items-center p-2 rounded-md"
-                >
-                  <span class="mr-2">🏠</span> Tableau de bord
-                </a>
-              </li>
-              <li class="mb-4">
-                <a
-                  href="{% url 'student:index' %}"
-                  class="sidebar-item text-blue-400 flex items-center p-2 rounded-md"
-                >
-                  <span class="mr-2">👥</span> Élèves
-                </a>
-              </li>
-              <li class="mb-4">
-                <a
-                  href="{% url 'teacher:index' %}"
-                  class="sidebar-item flex items-center font-medium p-2 rounded-md"
-                >
-                  <span class="mr-2">👩‍🏫</span> Professeurs
-                </a>
-              </li>
-              <li class="mb-4">
-                <a
-                  href="{% url 'user:index' %}"
-                  class="sidebar-item flex items-center p-2 rounded-md"
-                >
-                  <span class="mr-2">👤</span> Utilisateurs
-                </a>
-              </li>
-              <li class="mb-4">
-                <a
-                  href="{% url 'rapport:index' %}"
-                  class="sidebar-item flex items-center p-2 rounded-md"
-                >
-                  <span class="mr-2">📊</span> Rapport
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="p-6">
-          <a
-            href="{% url 'dashboard:index' %}"
-            class="text-gray-400 hover:text-white flex items-center justify-center transition duration-300"
-          >
-            <span class="mr-2">🔓</span> Déconnexion
-          </a>
-        </div>
-      </aside>
+{% extends "base.html" %}
 
+{% load static %}
+
+{% block title %}<title>Ajouter un élève</title>{% endblock title %}
+
+{% block content %}
+<body class="bg-gray-100 font-sans antialiased">
+    
       <!-- Main Content -->
       <div class="flex-1 p-6 fade-in">
         <a
@@ -101,13 +35,14 @@
           </h1>
           <form action="#" method="POST" class="grid grid-cols-2 gap-6">
             <!-- Champ Nom -->
-            {{form}}
+            {% csrf_token %}
+            
             <div>
               <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
               <input
                 type="text"
                 id="nom"
-                name="nom"
+                name="lastName"
                 class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300"
               />
             </div>
@@ -117,7 +52,7 @@
               <input
                 type="text"
                 id="prenom"
-                name="prenom"
+                name="firstName"
                 class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300"
               />
             </div>
@@ -128,7 +63,7 @@
                 <input
                   type="radio"
                   id="homme"
-                  name="genre"
+                  name="gender"
                   value="homme"
                   class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                 />
@@ -136,7 +71,7 @@
                 <input
                   type="radio"
                   id="femme"
-                  name="genre"
+                  name="gender"
                   value="femme"
                   class="ml-6 h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                 />
@@ -159,7 +94,7 @@
               <input
                 type="date"
                 id="date_naissance"
-                name="date_naissance"
+                name="birthDay"
                 class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300"
               />
             </div>
@@ -168,7 +103,7 @@
               <label for="classe" class="block text-sm font-medium text-gray-700">Classe</label>
               <select
                 id="classe"
-                name="classe"
+                name="classRoom"
                 class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300"
               >
                 <option value="Tle">Tle</option>
@@ -186,7 +121,7 @@
               <input
                 type="text"
                 id="telephone"
-                name="telephone"
+                name="telephon"
                 class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300"
               />
             </div>
@@ -196,7 +131,7 @@
               <input
                 type="text"
                 id="ville"
-                name="ville"
+                name="city"
                 class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300"
               />
             </div>
@@ -220,4 +155,5 @@
       </div>
     </div>
   </body>
+  {% endblock content %}
 </html>

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} <title>Ajouter un Utilisateur</title> {% endblock title %}
+
+
+
+{% block content %}
+
+
+<body class="bg-gray-100 font-sans antialiased">
+    
+
+        <!-- Main Content -->
+        <div class="flex-1 flex items-center justify-center p-6 lg:pl-72 fade-in">
+            <a href="{% url 'user:index' %}" class="text-gray-500 hover:text-gray-700 flex items-center mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Retour
+            </a>
+            <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+                <h1 class="text-2xl font-semibold mb-6 text-center">Ajouter un utilisateur</h1>
+                <form action="#" method="POST" class="grid grid-cols-1 gap-6">
+                {% csrf_token %}
+                    <!-- Champ pseudo -->
+                   
+                    <div>
+                        <label for="pseudo" class="block text-sm font-medium text-gray-700">Pseudo</label>
+                        <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <!-- Mot de passe -->
+                    <div>
+                        <label for="motdepasse" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+                        <input type="password" id="motdepasse" name="password" placeholder="Mot de passe" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <!-- Confirmer mot de passe -->
+                    <div>
+                        <label for="confirmermotdepasse" class="block text-sm font-medium text-gray-700">Confirmer mot de passe</label>
+                        <input type="password" id="confirmermotdepasse" name="confirmermotdepasse" placeholder="Confirmer mot de passe" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <!-- Boutons -->
+                    <div class="flex justify-center space-x-4">
+                        <button type="reset" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-colors">Annuler</button>
+                        <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition-colors">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock content %}
+</html>

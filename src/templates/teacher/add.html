@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} <title>Ajouter un professeur</title> {% endblock title %}
+
+
+
+{% block content %}
+<body class="bg-gray-100 font-sans antialiased">
+        
+        <!-- Main Content -->
+        <div class="flex-1 p-6 lg:pl-72 fade-in">
+        
+                
+            {% if teacher_form.error %}
+            <div class="mb-4">
+              {% for field in teacher_form %}
+                {% for error in field.errors %}
+                {{ error }}
+                {%endfor %}
+              {% endfor %}
+            </div>
+          {% endif %}
+                
+            <a href="{% url 'teacher:index' %}" class="text-gray-600 hover:text-gray-800 flex items-center mb-6 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Retour
+            </a>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg fade-in">
+                <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Ajouter un professeur</h1>
+                <form action="#" method="POST" class="grid grid-cols-1 lg:grid-cols-1 gap-6">
+                {% csrf_token %}
+                    <!-- Champ Nom -->
+                <div>
+                    <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
+                    <input type="text" id="nom" name="lastName" required aria-required="true"
+                            class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+                <!-- Champ Prénom -->
+                <div>
+                    <label for="prenom" class="block text-sm font-medium text-gray-700">Prénom</label>
+                    <input type="text" id="prenom" name="firstName" required aria-required="true"
+                            class="mt-1 p-2 block w-full border border-gray-3"/>
+            
+                    
+                    <!-- Champ Date de Naissance -->
+                    <div>
+                        <label for="date_naissance" class="block text-sm font-medium text-gray-700">Date de naissance</label>
+                        <input type="date" id="date_naissance" name="birthDay" required aria-required="true"
+                            class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <!-- Champ Matiere -->
+                    <div>
+                        <label for="matiere" class="block text-sm font-medium text-gray-700">Matière</label>
+                        <select
+                        id="matiere"
+                        name="subjectSign"
+                        class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300">
+                        <option value="Svt">SVT</option>
+                        <option value="Math">Mathématiques</option>
+                        <option value="Anglais">Anglais</option>
+                        <option value="Français">Français</option>
+                        <option value="Allemand">Allemand</option>
+                        <option value="Histoire">Histoire</option>
+                        <option value="Geographie">Geographie</option>
+                        </select>
+                    </div>
+                    <!-- Champ Téléphone -->
+                    <div>
+                        <label for="telephone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                        <input type="number" id="telephone" name="telephon"
+                            class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <!-- Champ Ville -->
+                    <div>
+                        <label for="ville" class="block text-sm font-medium text-gray-700">Ville</label>
+                        <input type="text" id="ville" name="city"
+                            class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <div>
+                        <label for="vacant" class="block text-sm font-medium text-gray-700">Vacant</label>
+                        <input type="checkbox" id="vacant" name="vacant"/>
+                    </div>
+                    
+                <div>
+                <label for="cours" class="block text-sm font-medium text-gray-700">Prochain cours</label>
+                <select
+                    id="cours"
+                    name="nextCours"
+                    class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300" >
+        
+                    <option value="Svt">SVT</option>
+                    <option value="Math">Mathématiques</option>
+                    <option value="Anglais">Anglais</option>
+                    <option value="Français">Français</option>
+                    <option value="Allemand">Allemand</option>
+                    <option value="Histoire">Histoire</option>
+                    <option value="Geographie">Geographie</option>
+                </select>
+                </div>
+                    <div>
+                        <label for="reunion" class="block text-sm font-medium text-gray-700">Prochaine reunion</label>
+                        <select
+                    id="reunion"
+                    name="topicNextMeeting"
+                    class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300" >
+        
+                    <option value="Pasdereunion">Pas de reunion</option>
+                    <option value="1H">Dans 1H</option>
+                    <option value="2H">Dans 2H</option>
+                    <option value="3H">Dans 3H</option>
+                    <option value="4H">Dans 4H</option>
+                    <option value="5H">Dans 5H</option>
+                    <option value="6H">Dans 6H</option>
+                    </select>
+                    </div>
+                    <!-- Boutons -->
+                    <div class="col-span-2 flex justify-center space-x-4">
+                        <button type="reset" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-transform transform hover:scale-105">Annuler</button>
+                        <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition-transform transform hover:scale-105">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+    {% endblock content %}
+</body>

@@ -1,8 +1,15 @@
 from django import forms
+from .models import Teacher
 
-class TeacherForm(forms.Form):
-    lastName = forms.CharField(max_length=50)
-    firstName = forms.CharField(max_length=50)
-    birthDay = forms.DateField()
-    city = forms.CharField(max_length=100)
-    telephon = forms.CharField(max_length=15)
+
+class TeacherForm(forms.ModelForm):
+    class Meta:
+        model = Teacher
+        fields = ['lastName', 'firstName', 'birthDay', 'city', 'telephon', 'vacant', 'subjectSign', 'nextCours', 'topicNextMeeting']
+        widgets = {
+            'lastName': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Entrer votre Nom'}),
+            'firstName': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Entrer votre Prénom'}),
+            'birthDay': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Entrer votre Ville'}),
+            'telephon': forms.NumberInput(attrs={'class': 'form-control', 'placeholder':'Entrer votre numéro'}),
+        }
